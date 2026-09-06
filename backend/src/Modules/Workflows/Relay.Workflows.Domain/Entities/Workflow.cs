@@ -4,12 +4,13 @@ using Relay.Workflows.Domain.ValueObjects;
 
 namespace Relay.Workflows.Domain.Entities;
 
-public sealed class Workflow
+public sealed class Workflow : IAuditable
 {
     public Workflow(WorkflowName name, DateTimeOffset createdAt)
     {
         Id = Guid.NewGuid();
         Name = name;
+        Active = true;
         CreatedAt = createdAt;
     }
 
@@ -17,13 +18,13 @@ public sealed class Workflow
 
     public WorkflowName Name { get; private set; }
 
-    public DateTimeOffset CreatedAt { get; private set; }
-
-    public DateTimeOffset UpdatedAt { get; private set; }
-
     public bool Active { get; private set; }
 
     public bool Deleted { get; private set; }
+
+    public DateTimeOffset CreatedAt { get; private set; }
+
+    public DateTimeOffset? UpdatedAt { get; private set; }
 
     public DateTimeOffset? DeletedAt { get; private set; }
 

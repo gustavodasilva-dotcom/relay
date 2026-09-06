@@ -4,13 +4,18 @@
     <Project Path="src/BuldingBlocks/Relay.Infrastructure/Relay.Infrastructure.csproj" />
     <Project Path="src/BuldingBlocks/Relay.SharedKernel/Relay.SharedKernel.csproj" />
   </Folder>
+  <Folder Name="/src/Hosts/">
+    <Project Path="src/Hosts/Hosts.WebApi/Hosts.WebApi.csproj" />
+  </Folder>
   <Folder Name="/src/Modules/" />
   <Folder Name="/src/Modules/Workflows/">
+    <Project Path="src/Modules/Workflows/Relay.Workflows.Application/Relay.Workflows.Application.csproj" />
     <Project Path="src/Modules/Workflows/Relay.Workflows.Domain/Relay.Workflows.Domain.csproj" />
+    <Project Path="src/Modules/Workflows/Relay.Workflows.Infrastructure/Relay.Workflows.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/" />
   <Folder Name="/tests/Architecture/">
-    <Project Path="tests/Architecture/Relay.ArchitectureTests/Relay.ArchitectureTests.csproj" />
+    <Project Path="tests/Architecture/Relay.Architecture.Tests/Relay.Architecture.Tests.csproj" />
   </Folder>
   <Folder Name="/tests/BuildingBlocks/">
     <Project Path="tests/BuildingBlocks/Relay.SharedKernel.UnitTests/Relay.SharedKernel.UnitTests.csproj" />
