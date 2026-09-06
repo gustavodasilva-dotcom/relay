@@ -34,7 +34,7 @@ public sealed class WorkflowNameTests
     public void Create_returns_success_when_name_has_exactly_255_characters()
     {
         // Arrange
-        var name = new string('a', DomainConstraints.MaxTitleLength);
+        var name = new string('a', WorkflowName.MaxLength);
 
         // Act
         var result = WorkflowName.Create(name);
@@ -64,7 +64,7 @@ public sealed class WorkflowNameTests
     public void Create_returns_invalid_length_error_when_name_exceeds_255_characters()
     {
         // Arrange
-        var name = new string('a', DomainConstraints.MaxTitleLength + 1);
+        var name = new string('a', WorkflowName.MaxLength + 1);
 
         // Act
         var result = WorkflowName.Create(name);

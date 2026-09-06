@@ -5,6 +5,8 @@ namespace Relay.Workflows.Domain.ValueObjects;
 
 public sealed class WorkflowName : ValueObject
 {
+    public const int MaxLength = 200;
+
     private WorkflowName(string name)
     {
         Name = name;
@@ -26,7 +28,7 @@ public sealed class WorkflowName : ValueObject
             return WorkflowNameErrors.Required;
         }
 
-        if (value.Length > DomainConstraints.MaxTitleLength)
+        if (value.Length > MaxLength)
         {
             return WorkflowNameErrors.InvalidLength;
         }
