@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Relay.Infrastructure.Abstractions;
 using Relay.Infrastructure.Interceptors;
 
 namespace Relay.Infrastructure.Extensions;
 
-public static class AuditingExtensions
+public static class AuditingDbContextExtensions
 {
     public static IServiceCollection AddAuditingDbContext<TContext>(
         this IServiceCollection services,
@@ -24,5 +25,16 @@ public static class AuditingExtensions
         });
 
         return services;
+    }
+
+    public static void Migrate<TContext>(this IHost host)
+        where TContext : AuditingDbContext<TContext>
+    {
+        using var scope = host.Services.CreateScope();
+
+        var context = scope.ServiceProvider
+            .GetRequiredService<TContext>();
+
+        context.Database.Migrate();
     }
 }

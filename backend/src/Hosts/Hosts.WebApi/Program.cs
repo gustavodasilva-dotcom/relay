@@ -11,7 +11,7 @@ builder.Services.AddScoped<IAuditActorProvider, WebApiAuditActorProvider>();
 
 builder.Services.AddSingleton(TimeProvider.System);
 
-builder.Services.AddInfrastructure();
+builder.Services.AddWorkflowsInfrastructure();
 
 var app = builder.Build();
 
@@ -21,5 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseWorkflowsInfrastructure();
 
 app.Run();

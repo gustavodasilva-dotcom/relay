@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Relay.Infrastructure.Abstractions;
 
-namespace Relay.Workflows.Infrastructure;
+namespace Relay.Workflows.Infrastructure.Data;
 
-public sealed class WorkflowsDbContext(
+internal sealed class WorkflowsDbContext(
     DbContextOptions<WorkflowsDbContext> options)
     : AuditingDbContext<WorkflowsDbContext>(options)
 {
