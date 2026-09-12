@@ -11,7 +11,7 @@ public abstract class PaginatedRequest(int page, int pageSize)
     [Range(1, int.MaxValue)]
     public int Page { get; } = page;
 
-    [Range(1, MaxPageSize)]
+    [Range(1, MaxPageSize), Display(Name = "page_size")]
     public int PageSize { get; } = pageSize;
 
     public IEnumerable<ValidationResult> Validate(ValidationContext _)
@@ -21,8 +21,8 @@ public abstract class PaginatedRequest(int page, int pageSize)
         if (offset > int.MaxValue)
         {
             yield return new ValidationResult(
-                "The requested page is too large.",
-                [nameof(Page), nameof(PageSize)]);
+                "The requested page is too large for the selected page size.",
+                ["pagination"]);
         }
     }
 }

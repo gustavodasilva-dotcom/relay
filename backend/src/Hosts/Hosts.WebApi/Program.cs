@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Asp.Versioning;
 using Hosts.WebApi.Impl;
 using Relay.Infrastructure.Abstractions;
@@ -34,7 +35,28 @@ builder.Services.AddApiVersioning(options =>
     })
     .AddOpenApi();
 
-builder.Services.AddProblemDetails();
+builder.Services.AddProblemDetails(options =>
+{
+    options.CustomizeProblemDetails = context =>
+    {
+        if (context.ProblemDetails is not HttpValidationProblemDetails validation)
+        {
+            return;
+        }
+
+        var errors = validation.Errors.ToArray();
+
+        validation.Errors.Clear();
+
+        foreach (var (propertyName, message) in errors)
+        {
+            var jsonPropertyName =
+                JsonNamingPolicy.SnakeCaseLower.ConvertName(propertyName);
+
+            validation.Errors[jsonPropertyName] = message;
+        }
+    };
+});
 
 var app = builder.Build();
 
