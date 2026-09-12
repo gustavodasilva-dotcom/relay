@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuldingBlocks\Relay.Infrastructure\Relay.Infrastructure.csproj" />
+    <ProjectReference Include="..\Relay.Workflows.Domain\Relay.Workflows.Domain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

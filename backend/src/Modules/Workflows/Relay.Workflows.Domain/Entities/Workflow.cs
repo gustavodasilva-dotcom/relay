@@ -14,9 +14,11 @@ public sealed class Workflow : IAuditable
         CreatedAt = createdAt;
     }
 
+    private Workflow() { }
+
     public Guid Id { get; private set; }
 
-    public WorkflowName Name { get; private set; }
+    public WorkflowName Name { get; private set; } = null!;
 
     public bool Active { get; private set; }
 

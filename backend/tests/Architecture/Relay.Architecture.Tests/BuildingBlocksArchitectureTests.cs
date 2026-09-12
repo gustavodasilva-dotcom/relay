@@ -10,9 +10,11 @@ public sealed class BuildingBlocksArchitectureTests
         // Arrange
         var forbiddenNamespaces = new[]
         {
+            ArchitectureProjects.ApiContracts.RootNamespace,
             ArchitectureProjects.BuildingBlocksInfrastructure.RootNamespace,
+            ArchitectureProjects.Routing.RootNamespace,
             ArchitectureProjects.WebApiRootNamespace,
-            ArchitectureProjects.WorkflowsApplication.RootNamespace,
+            ArchitectureProjects.WorkflowsFeatures.RootNamespace,
             ArchitectureProjects.WorkflowsDomain.RootNamespace,
             ArchitectureProjects.WorkflowsInfrastructure.RootNamespace
         };
@@ -34,8 +36,10 @@ public sealed class BuildingBlocksArchitectureTests
         // Arrange
         var forbiddenNamespaces = new[]
         {
+            ArchitectureProjects.ApiContracts.RootNamespace,
+            ArchitectureProjects.Routing.RootNamespace,
             ArchitectureProjects.WebApiRootNamespace,
-            ArchitectureProjects.WorkflowsApplication.RootNamespace,
+            ArchitectureProjects.WorkflowsFeatures.RootNamespace,
             ArchitectureProjects.WorkflowsDomain.RootNamespace,
             ArchitectureProjects.WorkflowsInfrastructure.RootNamespace
         };
@@ -44,6 +48,58 @@ public sealed class BuildingBlocksArchitectureTests
         var result = Types
             .InAssembly(
                 ArchitectureProjects.BuildingBlocksInfrastructure.Assembly)
+            .Should()
+            .NotHaveDependencyOnAny(forbiddenNamespaces)
+            .GetResult();
+
+        // Assert
+        AssertArchitecture.Success(result);
+    }
+
+    [Fact]
+    public void Routing_should_not_depend_on_other_projects()
+    {
+        // Arrange
+        var forbiddenNamespaces = new[]
+        {
+            ArchitectureProjects.ApiContracts.RootNamespace,
+            ArchitectureProjects.BuildingBlocksInfrastructure.RootNamespace,
+            ArchitectureProjects.SharedKernel.RootNamespace,
+            ArchitectureProjects.WebApiRootNamespace,
+            ArchitectureProjects.WorkflowsDomain.RootNamespace,
+            ArchitectureProjects.WorkflowsFeatures.RootNamespace,
+            ArchitectureProjects.WorkflowsInfrastructure.RootNamespace
+        };
+
+        // Act
+        var result = Types
+            .InAssembly(ArchitectureProjects.Routing.Assembly)
+            .Should()
+            .NotHaveDependencyOnAny(forbiddenNamespaces)
+            .GetResult();
+
+        // Assert
+        AssertArchitecture.Success(result);
+    }
+
+    [Fact]
+    public void ApiContracts_should_not_depend_on_other_projects()
+    {
+        // Arrange
+        var forbiddenNamespaces = new[]
+        {
+            ArchitectureProjects.BuildingBlocksInfrastructure.RootNamespace,
+            ArchitectureProjects.Routing.RootNamespace,
+            ArchitectureProjects.SharedKernel.RootNamespace,
+            ArchitectureProjects.WebApiRootNamespace,
+            ArchitectureProjects.WorkflowsDomain.RootNamespace,
+            ArchitectureProjects.WorkflowsFeatures.RootNamespace,
+            ArchitectureProjects.WorkflowsInfrastructure.RootNamespace
+        };
+
+        // Act
+        var result = Types
+            .InAssembly(ArchitectureProjects.ApiContracts.Assembly)
             .Should()
             .NotHaveDependencyOnAny(forbiddenNamespaces)
             .GetResult();

@@ -1,6 +1,6 @@
-﻿using System.Reflection;
+using System.Reflection;
 
-namespace Relay.Workflows.Application;
+namespace Relay.Workflows.Features;
 
 public static class AssemblyReference
 {

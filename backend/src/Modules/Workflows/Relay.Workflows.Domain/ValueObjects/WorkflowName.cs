@@ -7,16 +7,16 @@ public sealed class WorkflowName : ValueObject
 {
     public const int MaxLength = 200;
 
-    private WorkflowName(string name)
+    private WorkflowName(string value)
     {
-        Name = name;
+        Value = value;
     }
 
-    public string Name { get; }
+    public string Value { get; }
 
     protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return Name;
+        yield return Value;
     }
 
     public static Result<WorkflowName> Create(string? name)

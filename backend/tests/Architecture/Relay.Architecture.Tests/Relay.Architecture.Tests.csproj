@@ -20,10 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\BuldingBlocks\Relay.Api.Contracts\Relay.Api.Contracts.csproj" />
     <ProjectReference Include="..\..\..\src\BuldingBlocks\Relay.Infrastructure\Relay.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\src\BuldingBlocks\Relay.Routing\Relay.Routing.csproj" />
     <ProjectReference Include="..\..\..\src\BuldingBlocks\Relay.SharedKernel\Relay.SharedKernel.csproj" />
     <ProjectReference Include="..\..\..\src\Modules\Workflows\Relay.Workflows.Domain\Relay.Workflows.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Modules\Workflows\Relay.Workflows.Application\Relay.Workflows.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Modules\Workflows\Relay.Workflows.Features\Relay.Workflows.Features.csproj" />
     <ProjectReference Include="..\..\..\src\Modules\Workflows\Relay.Workflows.Infrastructure\Relay.Workflows.Infrastructure.csproj" />
   </ItemGroup>
 

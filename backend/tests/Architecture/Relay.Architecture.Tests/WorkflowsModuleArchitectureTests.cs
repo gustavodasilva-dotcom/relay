@@ -14,7 +14,8 @@ public sealed class WorkflowsModuleArchitectureTests
         // Arrange
         var forbiddenNamespaces = new string[]
         {
-            ArchitectureProjects.WorkflowsApplication.RootNamespace,
+            ArchitectureProjects.ApiContracts.RootNamespace,
+            ArchitectureProjects.WorkflowsFeatures.RootNamespace,
             ArchitectureProjects.WorkflowsInfrastructure.RootNamespace
         };
 
@@ -30,14 +31,21 @@ public sealed class WorkflowsModuleArchitectureTests
     }
 
     [Fact]
-    public void Application_layer_should_not_have_dependency_on_Infrastructure_layer()
+    public void Infrastructure_layer_should_not_have_dependency_on_Features_or_Routing()
     {
+        // Arrange
+        var forbiddenNamespaces = new[]
+        {
+            ArchitectureProjects.ApiContracts.RootNamespace,
+            ArchitectureProjects.Routing.RootNamespace,
+            ArchitectureProjects.WorkflowsFeatures.RootNamespace
+        };
+
         // Act
         var result = Types
-            .InAssembly(ArchitectureProjects.WorkflowsApplication.Assembly)
+            .InAssembly(ArchitectureProjects.WorkflowsInfrastructure.Assembly)
             .Should()
-            .NotHaveDependencyOn(
-                ArchitectureProjects.WorkflowsInfrastructure.RootNamespace)
+            .NotHaveDependencyOnAny(forbiddenNamespaces)
             .GetResult();
 
         // Assert

@@ -16,7 +16,7 @@ public sealed class WorkflowNameTests
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(JohnDoeName, result.Value!.Name);
+        Assert.Equal(JohnDoeName, result.Value!.Value);
     }
 
     [Fact]
@@ -27,11 +27,11 @@ public sealed class WorkflowNameTests
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(JohnDoeName, result.Value!.Name);
+        Assert.Equal(JohnDoeName, result.Value!.Value);
     }
 
     [Fact]
-    public void Create_returns_success_when_name_has_exactly_255_characters()
+    public void Create_returns_success_when_name_has_maximum_length()
     {
         // Arrange
         var name = new string('a', WorkflowName.MaxLength);
@@ -41,7 +41,7 @@ public sealed class WorkflowNameTests
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(name, result.Value!.Name);
+        Assert.Equal(name, result.Value!.Value);
     }
 
     [Theory]
@@ -61,7 +61,7 @@ public sealed class WorkflowNameTests
     }
 
     [Fact]
-    public void Create_returns_invalid_length_error_when_name_exceeds_255_characters()
+    public void Create_returns_invalid_length_error_when_name_exceeds_maximum_length()
     {
         // Arrange
         var name = new string('a', WorkflowName.MaxLength + 1);

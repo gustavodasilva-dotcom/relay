@@ -1,7 +1,9 @@
 <Solution>
   <Folder Name="/src/" />
   <Folder Name="/src/BuldingBlocks/">
+    <Project Path="src/BuldingBlocks/Relay.Api.Contracts/Relay.Api.Contracts.csproj" />
     <Project Path="src/BuldingBlocks/Relay.Infrastructure/Relay.Infrastructure.csproj" />
+    <Project Path="src/BuldingBlocks/Relay.Routing/Relay.Routing.csproj" />
     <Project Path="src/BuldingBlocks/Relay.SharedKernel/Relay.SharedKernel.csproj" />
   </Folder>
   <Folder Name="/src/Hosts/">
@@ -9,8 +11,8 @@
   </Folder>
   <Folder Name="/src/Modules/" />
   <Folder Name="/src/Modules/Workflows/">
-    <Project Path="src/Modules/Workflows/Relay.Workflows.Application/Relay.Workflows.Application.csproj" />
     <Project Path="src/Modules/Workflows/Relay.Workflows.Domain/Relay.Workflows.Domain.csproj" />
+    <Project Path="src/Modules/Workflows/Relay.Workflows.Features/Relay.Workflows.Features.csproj" />
     <Project Path="src/Modules/Workflows/Relay.Workflows.Infrastructure/Relay.Workflows.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/" />
@@ -18,10 +20,12 @@
     <Project Path="tests/Architecture/Relay.Architecture.Tests/Relay.Architecture.Tests.csproj" />
   </Folder>
   <Folder Name="/tests/BuildingBlocks/">
+    <Project Path="tests/BuildingBlocks/Relay.Api.Contracts.UnitTests/Relay.Api.Contracts.UnitTest.csproj" />
     <Project Path="tests/BuildingBlocks/Relay.SharedKernel.UnitTests/Relay.SharedKernel.UnitTests.csproj" />
   </Folder>
   <Folder Name="/tests/Modules/" />
   <Folder Name="/tests/Modules/Workflows/">
     <Project Path="tests/Modules/Workflows/Relay.Workflows.Domain.UnitTests/Relay.Workflows.Domain.UnitTests.csproj" />
+    <Project Path="tests/Modules/Workflows/Relay.Workflows.Features.IntegrationTests/Relay.Workflows.Features.IntegrationTests.csproj" />
   </Folder>
 </Solution>
