@@ -1,7 +1,10 @@
-﻿namespace Relay.SharedKernel;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Relay.SharedKernel;
 
 public record Result
 {
+    [MemberNotNullWhen(false, nameof(Error))]
     public bool IsSuccess { get; }
 
     public Error? Error { get; }
@@ -10,13 +13,15 @@ public record Result
     {
         if (isSuccess is true && error is not null)
         {
-            throw new ArgumentException("A successful result cannot contain an error.",
+            throw new ArgumentException(
+                "A successful result cannot contain an error.",
                 nameof(error));
         }
 
         if (isSuccess is false && error is null)
         {
-            throw new ArgumentException("A failed result must contain an error.",
+            throw new ArgumentException(
+                "A failed result must contain an error.",
                 nameof(error));
         }
 

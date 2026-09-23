@@ -10,4 +10,8 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Relay.SharedKernel\Relay.SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>

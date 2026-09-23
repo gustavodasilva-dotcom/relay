@@ -34,7 +34,7 @@ public sealed class Workflow : IAuditable
     {
         if (Deleted)
         {
-            return WorkflowErros.Deleted;
+            return WorkflowErrors.Deleted;
         }
 
         Name = name;
@@ -48,7 +48,7 @@ public sealed class Workflow : IAuditable
     {
         if (Deleted)
         {
-            return WorkflowErros.Deleted;
+            return WorkflowErrors.Deleted;
         }
 
         Deleted = true;

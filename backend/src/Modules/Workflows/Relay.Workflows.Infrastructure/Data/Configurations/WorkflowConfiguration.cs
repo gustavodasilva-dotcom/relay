@@ -28,5 +28,7 @@ internal sealed class WorkflowConfiguration : IEntityTypeConfiguration<Workflow>
 
         builder.Property(x => x.CreatedAt)
             .IsRequired();
+
+        builder.HasQueryFilter(x => !x.Deleted);
     }
 }

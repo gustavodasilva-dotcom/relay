@@ -48,12 +48,12 @@ builder.Services.AddProblemDetails(options =>
 
         validation.Errors.Clear();
 
-        foreach (var (propertyName, message) in errors)
+        foreach (var (propertyName, messages) in errors)
         {
             var jsonPropertyName =
                 JsonNamingPolicy.SnakeCaseLower.ConvertName(propertyName);
 
-            validation.Errors[jsonPropertyName] = message;
+            validation.Errors[jsonPropertyName] = messages;
         }
     };
 });

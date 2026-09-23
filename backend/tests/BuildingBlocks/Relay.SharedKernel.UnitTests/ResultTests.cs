@@ -114,7 +114,7 @@ public sealed class ResultTests
     }
 
     private static Error CreateError() =>
-        new("Some title", "Some description");
+        new("test.error", "Some description", ErrorType.Validation);
 
     private sealed record ExposedResult : Result
     {

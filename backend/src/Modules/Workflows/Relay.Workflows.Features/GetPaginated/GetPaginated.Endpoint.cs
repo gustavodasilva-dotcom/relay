@@ -12,8 +12,8 @@ internal sealed class GetPaginatedEndpoint : IEndpoint
         builder.MapGet(
             "workflows",
             async (
-                [AsParameters] GetPaginatedRequest request,
                 GetPaginatedHandler handler,
+                [AsParameters] GetPaginatedRequest request,
                 CancellationToken cancellationToken) =>
             {
                 var response = await handler.Handle(request, cancellationToken);

@@ -57,14 +57,13 @@ public sealed class BuildingBlocksArchitectureTests
     }
 
     [Fact]
-    public void Routing_should_not_depend_on_other_projects()
+    public void Routing_should_only_depend_on_SharedKernel()
     {
         // Arrange
         var forbiddenNamespaces = new[]
         {
             ArchitectureProjects.ApiContracts.RootNamespace,
             ArchitectureProjects.BuildingBlocksInfrastructure.RootNamespace,
-            ArchitectureProjects.SharedKernel.RootNamespace,
             ArchitectureProjects.WebApiRootNamespace,
             ArchitectureProjects.WorkflowsDomain.RootNamespace,
             ArchitectureProjects.WorkflowsFeatures.RootNamespace,

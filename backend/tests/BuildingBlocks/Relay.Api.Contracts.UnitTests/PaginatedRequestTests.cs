@@ -11,7 +11,7 @@ public sealed class PaginatedRequestTests
         var request = new TestPaginatedRequest();
 
         // Assert
-        Assert.Equal(1, request.Page);
+        Assert.Equal(PaginatedRequest.DefaultPage, request.Page);
         Assert.Equal(PaginatedRequest.DefaultPageSize, request.PageSize);
         Assert.Empty(Validate(request));
     }
@@ -84,10 +84,10 @@ public sealed class PaginatedRequestTests
 
         // Assert
         var result = Assert.Single(results);
-        Assert.Equal("The requested page is too large.", result.ErrorMessage);
         Assert.Equal(
-            [nameof(PaginatedRequest.Page), nameof(PaginatedRequest.PageSize)],
-            result.MemberNames);
+            "The requested page is too large for the selected page size.",
+            result.ErrorMessage);
+        Assert.Equal(["pagination"], result.MemberNames);
     }
 
     private static IReadOnlyList<ValidationResult> Validate(

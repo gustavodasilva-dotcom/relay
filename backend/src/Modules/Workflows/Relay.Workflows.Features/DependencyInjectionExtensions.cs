@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using Relay.Workflows.Features.Create;
+using Relay.Workflows.Features.GetById;
 using Relay.Workflows.Features.GetPaginated;
 
 namespace Relay.Workflows.Features;
@@ -10,7 +12,10 @@ public static class DependencyInjectionExtensions
     {
         services.AddValidation();
 
-        services.AddScoped<GetPaginatedHandler>();
+        services
+            .AddScoped<CreateHandler>()
+            .AddScoped<GetByIdHandler>()
+            .AddScoped<GetPaginatedHandler>();
 
         return services;
     }

@@ -8,10 +8,12 @@ internal static class WorkflowNameErrors
     internal static readonly Error Required =
         new(
             "workflow_name.required",
-            "The workflow name is required.");
+            "The workflow name is required.",
+            ErrorType.Validation);
 
     internal static readonly Error InvalidLength =
         new(
             "workflow_name.invalid_length",
-            $"The workflow name must not exceed {WorkflowName.MaxLength} characters.");
+            $"The workflow name must not exceed {WorkflowName.MaxLength} characters.",
+            ErrorType.Validation);
 }

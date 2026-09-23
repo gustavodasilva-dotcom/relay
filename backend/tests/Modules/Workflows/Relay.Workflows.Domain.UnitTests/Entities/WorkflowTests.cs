@@ -64,7 +64,7 @@ public sealed class WorkflowTests
 
         // Assert
         Assert.False(result.IsSuccess);
-        Assert.Equal(WorkflowErros.Deleted, result.Error);
+        Assert.Equal(WorkflowErrors.Deleted, result.Error);
     }
 
     [Fact]
@@ -94,7 +94,7 @@ public sealed class WorkflowTests
 
         // Assert
         Assert.False(result.IsSuccess);
-        Assert.Equal(WorkflowErros.Deleted, result.Error);
+        Assert.Equal(WorkflowErrors.Deleted, result.Error);
     }
 
     private static Workflow CreateWorkflow() =>

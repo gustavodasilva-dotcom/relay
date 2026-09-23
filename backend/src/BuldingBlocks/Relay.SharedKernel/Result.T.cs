@@ -8,7 +8,8 @@ public sealed record Result<T> : Result
     {
         if (value is null)
         {
-            throw new ArgumentException("A typed successful result must contain a value.",
+            throw new ArgumentException(
+                "A typed successful result must contain a value.",
                 nameof(value));
         }
 
