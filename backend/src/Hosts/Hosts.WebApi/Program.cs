@@ -2,6 +2,7 @@ using System.Text.Json;
 using Asp.Versioning;
 using Hosts.WebApi.Impl;
 using Relay.Infrastructure.Abstractions;
+using Relay.Infrastructure.Extensions;
 using Relay.Routing.Extensions;
 using Relay.Workflows.Features;
 using Relay.Workflows.Infrastructure;
@@ -57,6 +58,8 @@ builder.Services.AddProblemDetails(options =>
         }
     };
 });
+
+builder.Observe("relay-api");
 
 var app = builder.Build();
 
