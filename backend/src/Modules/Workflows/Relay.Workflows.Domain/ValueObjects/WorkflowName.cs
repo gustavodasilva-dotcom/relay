@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Relay.SharedKernel;
 using Relay.Workflows.Domain.Errors;
 
@@ -7,6 +8,7 @@ public sealed class WorkflowName : ValueObject
 {
     public const int MaxLength = 200;
 
+    [JsonConstructor]
     private WorkflowName(string value)
     {
         Value = value;

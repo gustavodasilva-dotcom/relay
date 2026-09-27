@@ -10,7 +10,9 @@ namespace Relay.Workflows.Infrastructure;
 public static class DependencyInjection
 {
     public static IServiceCollection AddWorkflowsInfrastructure(
-        this IServiceCollection services)
+        this IServiceCollection services,
+        IConfiguration configuration,
+        IHostEnvironment environment)
     {
         services.AddAuditingDbContext<WorkflowsDbContext>(
             (sp, options) =>
@@ -19,7 +21,18 @@ public static class DependencyInjection
                     sp.GetRequiredService<IConfiguration>();
 
                 options.UseNpgsql(
-                    configuration.GetConnectionString("Default"));
+                    configuration.GetConnectionString("Postgres"));
+            });
+
+        services.AddHybridRedisCache(
+            configuration,
+            (options) =>
+            {
+                options.Configuration =
+                    configuration.GetConnectionString("Redis");
+
+                options.InstanceName =
+                    $"relay:workflows:{environment.EnvironmentName}:";
             });
 
         return services;

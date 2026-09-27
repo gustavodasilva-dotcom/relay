@@ -32,6 +32,7 @@ public static class ObservabilityExtensions
                     .AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
                     .AddEntityFrameworkCoreInstrumentation()
+                    .AddRedisInstrumentation()
                     .AddNpgsql()
                     .AddOtlpExporter();
             })

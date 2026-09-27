@@ -30,6 +30,7 @@ internal sealed class IntegrationTestWebApplication : IAsyncDisposable
         builder.Services.AddSingleton(TimeProvider.System);
         builder.Services.AddDbContext<WorkflowsDbContext>(options =>
             options.UseInMemoryDatabase(databaseName));
+        builder.Services.AddHybridCache();
         builder.Services.AddWorkflowsFeatures();
         builder.Services.AddEndpoints(AssemblyReference.Assembly);
 

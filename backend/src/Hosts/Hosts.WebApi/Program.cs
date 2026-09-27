@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Asp.Versioning;
 using Hosts.WebApi.Impl;
+using Hosts.WebApi.Middlewares;
 using Relay.Infrastructure.Abstractions;
 using Relay.Infrastructure.Extensions;
 using Relay.Routing.Extensions;
@@ -15,7 +16,7 @@ builder.Services.AddScoped<IAuditActorProvider, WebApiAuditActorProvider>();
 builder.Services.AddSingleton(TimeProvider.System);
 
 builder.Services
-    .AddWorkflowsInfrastructure()
+    .AddWorkflowsInfrastructure(builder.Configuration, builder.Environment)
     .AddWorkflowsFeatures();
 
 builder.Services.AddEndpoints(
@@ -35,6 +36,8 @@ builder.Services.AddApiVersioning(options =>
         options.SubstituteApiVersionInUrl = true;
     })
     .AddOpenApi();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 builder.Services.AddProblemDetails(options =>
 {
@@ -69,6 +72,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseExceptionHandler();
 
 app.UseWorkflowsInfrastructure();
 

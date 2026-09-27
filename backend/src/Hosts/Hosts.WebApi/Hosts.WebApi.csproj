@@ -4,6 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Description>Relay's modular monolith API entry point.</Description>
   </PropertyGroup>
 
   <ItemGroup>
