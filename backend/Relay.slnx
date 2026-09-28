@@ -21,6 +21,7 @@
   </Folder>
   <Folder Name="/tests/BuildingBlocks/">
     <Project Path="tests/BuildingBlocks/Relay.Api.Contracts.UnitTests/Relay.Api.Contracts.UnitTest.csproj" />
+    <Project Path="tests/BuildingBlocks/Relay.Infrastructure.UnitTests/Relay.Infrastructure.UnitTests.csproj" />
     <Project Path="tests/BuildingBlocks/Relay.SharedKernel.UnitTests/Relay.SharedKernel.UnitTests.csproj" />
   </Folder>
   <Folder Name="/tests/Modules/" />

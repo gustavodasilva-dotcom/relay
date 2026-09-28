@@ -47,7 +47,9 @@ public sealed class HybridCachingOptions : IValidatableObject
                 [nameof(Expiration)]);
         }
 
-        if (LocalCacheExpiration > Expiration)
+        if (LocalCacheExpiration > TimeSpan.Zero
+            && Expiration > TimeSpan.Zero
+            && LocalCacheExpiration > Expiration)
         {
             yield return new ValidationResult(
                 "\"LocalCacheExpiration\" cannot exceed \"Expiration\".",
