@@ -24,6 +24,9 @@
     <Project Path="tests/BuildingBlocks/Relay.Infrastructure.UnitTests/Relay.Infrastructure.UnitTests.csproj" />
     <Project Path="tests/BuildingBlocks/Relay.SharedKernel.UnitTests/Relay.SharedKernel.UnitTests.csproj" />
   </Folder>
+  <Folder Name="/tests/Hosts/">
+    <Project Path="tests/Hosts/Hosts.WebApi.IntegrationTests/Hosts.WebApi.IntegrationTests.csproj" />
+  </Folder>
   <Folder Name="/tests/Modules/" />
   <Folder Name="/tests/Modules/Workflows/">
     <Project Path="tests/Modules/Workflows/Relay.Workflows.Domain.UnitTests/Relay.Workflows.Domain.UnitTests.csproj" />
